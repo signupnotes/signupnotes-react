@@ -9,7 +9,7 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    // "isolatedModules": true,
+    "isolatedModules": true,
     "moduleDetection": "force",
     "emitDeclarationOnly": true,
     "declaration": true,
@@ -19,7 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "outFile": "dist/index.js"
+    "outDir": "dist/"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
