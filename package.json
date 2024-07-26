@@ -2,7 +2,7 @@
   "name": "@signupnotes/signupnotes-react",
   "private": false,
   "description": "A signupnotes form wrapper for React",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -12,8 +12,7 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.umd.js",
       "types": "./dist/index.d.ts"
-    },
-    "./styles": "./dist/style.css"
+    }
   },
   "files": [
     "/dist"
@@ -23,7 +22,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "pnpm tsc -p tsconfig.app.json & vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "publish": "pnpm build & npm publish --access public"
