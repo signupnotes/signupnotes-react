@@ -2,7 +2,7 @@
   "name": "@signupnotes/signupnotes-react",
   "private": false,
   "description": "A signupnotes form wrapper for React",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -25,7 +25,7 @@
     "build": "pnpm tsc -p tsconfig.app.json & vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "publish": "pnpm build & npm publish --access public"
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "@types/node": "^20.14.12",
