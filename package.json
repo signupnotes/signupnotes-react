@@ -25,7 +25,7 @@
     "build": "pnpm tsc -p tsconfig.app.json & vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "publish": "npm publish --access public"
+    "publish": "pnpm build & npm publish --access public"
   },
   "dependencies": {
     "@types/node": "^20.14.12",

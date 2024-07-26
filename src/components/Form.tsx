@@ -40,6 +40,12 @@ const Form: React.FC<Props> = (props) => {
     formRef.current?.addEventListener('loaded', (e) => {
       if (props.onLoaded) props.onLoaded((e as CustomEvent<boolean>).detail);
     });
+    return () => {
+      formRef.current?.removeEventListener('step-change', () => {});
+      formRef.current?.removeEventListener('submit-data', () => {});
+      formRef.current?.removeEventListener('loading', () => {});
+      formRef.current?.removeEventListener('loaded', () => {});
+    };
   }, [formInit]);
 
   return (
