@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+#  SignupNotes React Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The `signupnotes` package provides a React component to easily integrate SignupNotes forms into your React application.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    npm install signupnotes/react
+    yarn add signupnotes/react
 
-## Expanding the ESLint configuration
+## Usage
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+	import { SignupNotesForm } from  "@signupnotes/signupnotes-react"
+	
+    <SignupNotesForm
+		formId="your-form-id"
+		returnUrl="https://your-return-url.com"
+		onCompleted={handleCompleted}
+		onStepChange={handleStepChange}
+		onLoading={handleLoading}
+		onLoaded={handleLoaded}
+		values={{ name: 'John Doe', email: 'john@example.com' }}
+		metaData={{ source: 'newsletter' }}
+	/>
+## Props
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+-   **formId** (required): The unique ID of the form.
+-   **returnUrl** (optional): The URL to redirect to after form submission.
+-   **onCompleted** (optional): Callback function that receives form submission data.
+-   **onStepChange** (optional): Callback function that receives the current step number.
+-   **onLoading** (optional): Callback function that receives the loading state (boolean).
+-   **onLoaded** (optional): Callback function that receives the loaded state (boolean).
+-   **values** (optional): Pre-fill form values as a record.
+-   **metaData** (optional): Additional metadata to send with the form.
