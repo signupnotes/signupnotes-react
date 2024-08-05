@@ -7,6 +7,8 @@ type Props = {
   onStepChange?: (step: number) => void;
   onLoading?: (loading: boolean) => void;
   onLoaded?: (loaded: boolean) => void;
+  values?: Record<string, any>;
+  metaData?: Record<string, any>;
 };
 const Form: React.FC<Props> = (props) => {
   const formRef = useRef<HTMLElement | null>(null);
@@ -50,7 +52,14 @@ const Form: React.FC<Props> = (props) => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <form-element ref={formRef} form-id={props.formId} return-url={props.returnUrl} />;
+      <form-element
+        ref={formRef}
+        form-id={props.formId}
+        return-url={props.returnUrl}
+        form-values={props.values}
+        meta-data={props.metaData}
+      />
+      ;
     </div>
   );
 };

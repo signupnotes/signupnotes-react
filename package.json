@@ -2,7 +2,7 @@
   "name": "@signupnotes/signupnotes-react",
   "private": false,
   "description": "A signupnotes form wrapper for React",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
