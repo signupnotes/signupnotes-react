@@ -52,7 +52,7 @@ const Form: React.FC<Props> = (props) => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <form-element
+      <signup-notes
         ref={formRef}
         form-id={props.formId}
         return-url={props.returnUrl}
