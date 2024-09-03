@@ -18,6 +18,7 @@ const Form: React.FC<Props> = (props) => {
     const head = document.querySelector('head');
     const script = document.createElement('script');
     if (!head) return;
+    if (document.querySelector('[src="https://sdk.signupnotes.com/form.js"]')) return;
     script.setAttribute('src', 'https://sdk.signupnotes.com/form.js');
     head.appendChild(script);
     script.onload = () => {
