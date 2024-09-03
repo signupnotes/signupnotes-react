@@ -18,7 +18,7 @@ const Form: React.FC<Props> = (props) => {
     const head = document.querySelector('head');
     const script = document.createElement('script');
     if (!head) return;
-    script.setAttribute('src', 'https://dev.signupnotes-sdk.pages.dev/form.js');
+    script.setAttribute('src', 'https://sdk.signupnotes.com/form.js');
     head.appendChild(script);
     script.onload = () => {
       setFormInit(true);
@@ -28,25 +28,33 @@ const Form: React.FC<Props> = (props) => {
     };
   }, []);
 
+  const stepChangeEvent = (e: CustomEvent<number>) => {
+    if (props.onStepChange) props.onStepChange(e.detail);
+  };
+
+  const submitDataEvent = (e: CustomEvent<Record<string, any>>) => {
+    if (props.onCompleted) props.onCompleted(e.detail.formData);
+  };
+
+  const loadingEvent = (e: CustomEvent<boolean>) => {
+    if (props.onLoading) props.onLoading(e.detail);
+  };
+
+  const loadedEvent = (e: CustomEvent<boolean>) => {
+    if (props.onLoaded) props.onLoaded(e.detail);
+  };
+
   useEffect(() => {
     if (!formInit) return;
-    formRef.current?.addEventListener('step-change', (e) => {
-      if (props.onStepChange) props.onStepChange((e as CustomEvent<number>).detail);
-    });
-    formRef.current?.addEventListener('submit-data', (e) => {
-      if (props.onCompleted) props.onCompleted((e as CustomEvent<Record<string, any>>).detail.formData);
-    });
-    formRef.current?.addEventListener('loading', (e) => {
-      if (props.onLoading) props.onLoading((e as CustomEvent<boolean>).detail);
-    });
-    formRef.current?.addEventListener('loaded', (e) => {
-      if (props.onLoaded) props.onLoaded((e as CustomEvent<boolean>).detail);
-    });
+    formRef.current?.addEventListener('step-change', stepChangeEvent as EventListener);
+    formRef.current?.addEventListener('submit-data', submitDataEvent as EventListener);
+    formRef.current?.addEventListener('loading', loadingEvent as EventListener);
+    formRef.current?.addEventListener('loaded', loadedEvent as EventListener);
     return () => {
-      formRef.current?.removeEventListener('step-change', () => {});
-      formRef.current?.removeEventListener('submit-data', () => {});
-      formRef.current?.removeEventListener('loading', () => {});
-      formRef.current?.removeEventListener('loaded', () => {});
+      formRef.current?.removeEventListener('step-change', stepChangeEvent as EventListener);
+      formRef.current?.removeEventListener('submit-data', submitDataEvent as EventListener);
+      formRef.current?.removeEventListener('loading', loadingEvent as EventListener);
+      formRef.current?.removeEventListener('loaded', loadedEvent as EventListener);
     };
   }, [formInit]);
 
