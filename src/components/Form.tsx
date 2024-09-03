@@ -67,7 +67,6 @@ const Form: React.FC<Props> = (props) => {
         form-values={props.values}
         meta-data={props.metaData}
       />
-      ;
     </div>
   );
 };
