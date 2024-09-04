@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 type Props = {
   formId: string;
@@ -12,7 +12,6 @@ type Props = {
 };
 const Form: React.FC<Props> = (props) => {
   const formRef = useRef<HTMLElement | null>(null);
-  const [formInit, setFormInit] = useState(false);
 
   useEffect(() => {
     const head = document.querySelector('head');
@@ -21,9 +20,6 @@ const Form: React.FC<Props> = (props) => {
     if (document.querySelector('[src="https://sdk.signupnotes.com/form.js"]')) return;
     script.setAttribute('src', 'https://sdk.signupnotes.com/form.js');
     head.appendChild(script);
-    script.onload = () => {
-      setFormInit(true);
-    };
     return () => {
       head.removeChild(script);
     };
@@ -46,7 +42,6 @@ const Form: React.FC<Props> = (props) => {
   };
 
   useEffect(() => {
-    if (!formInit) return;
     formRef.current?.addEventListener('step-change', stepChangeEvent as EventListener);
     formRef.current?.addEventListener('submit-data', submitDataEvent as EventListener);
     formRef.current?.addEventListener('loading', loadingEvent as EventListener);
@@ -57,7 +52,7 @@ const Form: React.FC<Props> = (props) => {
       formRef.current?.removeEventListener('loading', loadingEvent as EventListener);
       formRef.current?.removeEventListener('loaded', loadedEvent as EventListener);
     };
-  }, [formInit]);
+  }, [formRef.current]);
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
