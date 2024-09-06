@@ -30,7 +30,6 @@ const Form: React.FC<Props> = (props) => {
   };
 
   const submitDataEvent = (e: CustomEvent<Record<string, any>>) => {
-    console.log('e.detail', e.detail);
     if (props.onCompleted) props.onCompleted(e.detail);
   };
 
