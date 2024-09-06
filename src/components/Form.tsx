@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 
 type Props = {
   formId: string;
-  returnUrl?: string;
   onCompleted?: (data: Record<string, any>) => void;
   onStepChange?: (step: number) => void;
   onLoading?: (loading: boolean) => void;
@@ -59,7 +58,6 @@ const Form: React.FC<Props> = (props) => {
       <signup-notes
         ref={formRef}
         form-id={props.formId}
-        return-url={props.returnUrl}
         form-values={props.values}
         meta-data={props.metaData}
       />

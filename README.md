@@ -13,7 +13,6 @@ The `signupnotes` package provides a React component to easily integrate SignupN
 	
     <SignupNotesForm
 		formId="your-form-id"
-		returnUrl="https://your-return-url.com"
 		onCompleted={handleCompleted}
 		onStepChange={handleStepChange}
 		onLoading={handleLoading}
@@ -24,7 +23,6 @@ The `signupnotes` package provides a React component to easily integrate SignupN
 ## Props
 
 -   **formId** (required): The unique ID of the form.
--   **returnUrl** (optional): The URL to redirect to after form submission.
 -   **onCompleted** (optional): Callback function that receives form submission data.
 -   **onStepChange** (optional): Callback function that receives the current step number.
 -   **onLoading** (optional): Callback function that receives the loading state (boolean).
